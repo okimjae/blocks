@@ -3,7 +3,6 @@ import initialState from "./initialState";
 import { Node } from "../types/Node";
 import { RootState } from "../store/configureStore";
 import fetch from "cross-fetch";
-import { Block } from "../types/Block";
 
 export interface NodesState {
   list: Node[];

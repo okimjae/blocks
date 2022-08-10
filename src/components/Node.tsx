@@ -59,6 +59,29 @@ const TypographySecondaryHeading = styled(Typography)(({ theme }) => ({
   lineHeight: 2,
 }));
 
+const BlockBox = styled(Box)({
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "space-between",
+  backgroundColor: "rgba(0, 0, 0, 0.12)",
+  borderRadius: "2px",
+  margin: '2px 0',
+  padding: 8
+});
+
+const BlockTitle = styled(Typography)({
+  color: "#304FFE",
+  fontWeight: 700,
+  fontSize: "10px",
+  lineHeight: "16px",
+});
+
+const BlockDescription = styled(Typography)({
+  fontWeight: 400,
+  fontSize: "14px",
+  lineHeight: "20px",
+});
+
 const Node: React.FC<Props> = ({ node, expanded, toggleNodeExpanded }) => {
   return (
     <AccordionRoot
@@ -80,7 +103,15 @@ const Node: React.FC<Props> = ({ node, expanded, toggleNodeExpanded }) => {
         </BoxSummaryContent>
       </AccordionSummaryContainer>
       <AccordionDetails>
-        <Typography>Blocks go here</Typography>
+        {/* <Typography>Blocks go here</Typography> */}
+        {node?.blocks?.map((block,key) => {
+          return(
+            <BlockBox key={key}>
+              <BlockTitle>{block?.id}</BlockTitle>
+              <BlockDescription>{block?.attributes?.data}</BlockDescription>
+            </BlockBox>
+          )
+        })}
       </AccordionDetails>
     </AccordionRoot>
   );
