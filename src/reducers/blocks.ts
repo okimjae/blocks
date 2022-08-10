@@ -12,7 +12,7 @@ export const getNodeBlocks = createAsyncThunk(
   "nodes/getNodeBlocks",
   async (node: Node) => {
     const response = await fetch(`${node.url}/api/v1/blocks`);
-    const {data} = await response.json();
+    const { data } = await response.json();
     return data;
   }
 );
@@ -52,5 +52,5 @@ export const blocksSlice = createSlice({
   },
 });
 
-export const selectBlocks = (state: RootState) => state.nodes.list;
+export const selectBlocks = (state: RootState) => state.blocks.list;
 export default blocksSlice.reducer;
