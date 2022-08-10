@@ -4,7 +4,7 @@ import Node from "../components/Node";
 import { Typography, Box } from "@mui/material";
 import { useDispatch } from "react-redux";
 import { useAppSelector } from "../store/configureStore";
-import { checkNodesStatus, selectNodes } from "../reducers/nodes";
+import { checkNodesStatus, getNodesBlocks, selectNodes } from "../reducers/nodes";
 
 export const Nodes: React.FC = () => {
   const [expandedNodeURL, setExpandedNodeURL] = useState<null | string>(null);
@@ -13,6 +13,7 @@ export const Nodes: React.FC = () => {
 
   useEffect(() => {
     dispatch(checkNodesStatus(nodes));
+    dispatch(getNodesBlocks(nodes));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
